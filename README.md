@@ -21,6 +21,8 @@ npm run test:e2e     # Playwright, against a running backend with seed_demo (sta
 
 ## Production
 
-`npm run build` makes `dist/`, which nginx serves. `deploy/nginx.conf` is the nginx site: it serves `dist/`, passes
-`/api`, `/admin` and `/support` to Django and serves Django's static files and public uploads. `deploy/update.sh` pulls
-and rebuilds. The full guide is the backend repository's `docs/deploy.md`.
+The `Dockerfile` builds the app and serves `dist/` from its own container. `docker-compose.yml` runs that container on
+127.0.0.1:8080. The server's nginx (installed with apt) sits in front: `deploy/nginx.conf` is its site. It handles HTTPS,
+sends `/api`, `/admin` and `/support` to the backend container, serves Django's static files and public uploads, and
+sends everything else to this container. `deploy/update.sh` pulls and rebuilds. The full guide is the backend
+repository's `docs/deploy.md`.

@@ -1,0 +1,11 @@
+# SSS HR System frontend in production: docker compose up -d --build
+# Serves the built app on 127.0.0.1:8080 only; the server's nginx (deploy/nginx.conf) handles HTTPS in front of it.
+name: sss-hr-frontend
+
+services:
+  web:
+    build: .
+    image: sss-hr-frontend
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:80"
