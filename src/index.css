@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+/* Design tokens. The layout follows docs/design/*.png; the colours follow the SSS HR System logo (docs/brand): the
+   token names are the design's roles, kept so components don't change — "navy" is the dark primary (now a deep brand
+   green), "teal" the accent (the logo's green), "gold" the logo's gold. Chip colours are Tailwind's 100/800 shades
+   (green, amber, pink, violet, sky, orange) from the default palette. */
+@theme {
+  --font-sans: "IBM Plex Sans Arabic", ui-sans-serif, system-ui, "Segoe UI", Tahoma, sans-serif;
+
+  --color-navy: #00522a;
+  --color-navy-hover: #00401f;
+  --color-ink: #1b2620;
+  --color-muted: #475467;
+  --color-subtle: #98a2b3;
+  --color-line: #e4e7ec;
+  --color-line-strong: #d0d5dd;
+
+  --color-teal: #2f9e62;
+  --color-teal-dark: #006c35;
+  --color-teal-dark-hover: #005a2c;
+  --color-teal-ink: #00532a;
+  --color-teal-soft: #e6f4eb;
+  --color-teal-mist: #e3f3e9;
+
+  --color-gold: #d4a63a;
+  --color-gold-dark: #9a7420;
+  --color-gold-soft: #faf2de;
+
+  --color-sky-wash: #f1f5ef;
+  --color-mint-wash: #dff0e5;
+  --color-avatar: #e4eee7;
+  --color-peach: #f2d3be;
+  --color-peach-ink: #8a3b12;
+  --color-forest: #1f5c3a;
+
+  --color-danger: #b42318;
+  --color-danger-soft: #ffe4e1;
+  --color-neutral-soft: #f2f4f7;
+  --color-badge: #d92d20;
+
+  --radius-panel: 28px;
+  --radius-card: 20px;
+  --radius-tile: 16px;
+
+  --shadow-soft: 0 1px 2px rgb(20 40 28 / 0.03), 0 8px 28px rgb(20 40 28 / 0.05);
+  --shadow-pop: 0 12px 32px rgb(20 40 28 / 0.14);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    min-height: 100dvh;
+    margin: 0;
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    /* Soft sage at the top fading to pale mint green at the bottom (the logo's green, washed out). */
+    background: linear-gradient(180deg, var(--color-sky-wash) 0%, #eef4ed 45%, #e6f2ea 80%, var(--color-mint-wash) 100%)
+      fixed;
+    background-color: var(--color-sky-wash);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Western digits in both languages, as in the designs; tabular so table columns line up. */
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-teal-dark);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
