@@ -79,4 +79,6 @@ export const rolesApi = {
 export const passwordLinkApi = {
   check: (uid: string, token: string) => api.get<{ valid: boolean; email: string }>("/auth/set-password", { uid, token }),
   set: (uid: string, token: string, password: string) => api.post<{ email: string }>("/auth/set-password", { uid, token, password }),
+  /** "Forgot your password?": 204 whatever the address (the answer never says whether it has an account). */
+  forgot: (email: string) => api.post<void>("/auth/forgot-password", { email }),
 };

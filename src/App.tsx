@@ -30,6 +30,10 @@ const router = createBrowserRouter([
   { path: "/login", HydrateFallback: () => null, lazy: page(() => import("./features/auth/LoginPage")) },
   // Public: the invitation / new password link e-mailed to a user (Settings → Users and roles).
   { path: "/set-password/:uid/:token", HydrateFallback: () => null, lazy: page(() => import("./features/auth/SetPasswordPage")) },
+  // Public: the company's link for the mobile app (stores, company code, QR code); opens the app when it's installed.
+  { path: "/app", HydrateFallback: () => null, lazy: page(() => import("./features/mobile/AppPage")) },
+  // Public: the privacy policy of the website and the app (the stores link to it).
+  { path: "/privacy", HydrateFallback: () => null, lazy: page(() => import("./features/privacy/PrivacyPage")) },
   // Public: the QR code on a letter opens this without signing in.
   { path: "/verify/:token", HydrateFallback: () => null, lazy: page(() => import("./features/letters/VerifyPage")) },
   // Public: the careers page (Phase 6 task 2), no sign-in.

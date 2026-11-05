@@ -483,7 +483,17 @@
       "suspended": "Your company's account is suspended. Please contact SSS HR System support."
     },
     "suspendedTitle": "Account suspended",
-    "suspendedBody": "Your company's account is suspended. Please contact SSS HR System support."
+    "suspendedBody": "Your company's account is suspended. Please contact SSS HR System support.",
+    "forgot": {
+      "link": "Forgot your password?",
+      "title": "Get a new password link",
+      "intro": "Enter your e-mail. If it has an account here, we'll send you a link to choose a new password.",
+      "submit": "Send the link",
+      "sending": "Sending...",
+      "sent": "If this e-mail has an account here, a link to choose a new password is on its way. It works once, for 3 days.",
+      "invalid": "Enter a valid e-mail address.",
+      "back": "Back to sign in"
+    }
   },
   "notifications": {
     "title": "Notifications",
@@ -2431,7 +2441,9 @@
     "importPeople": "Import the mapping from Excel",
     "importTitle": "Device people to employees",
     "importNote": "One row per person: the connection's name, their ID on the device and the employee number (empty = not linked). A person the server hasn't sent yet is added, and their earlier punches move with the link.",
-    "backToDevices": "Back to devices"
+    "backToDevices": "Back to devices",
+    "mockLocation": "Location may be faked",
+    "mockLocationHint": "The phone reported a faked location (a mock-location app). The punch was taken: check it with the employee."
   },
   "record": {
     "title": "Attendance record",
@@ -5369,7 +5381,8 @@
     "deactivate": "Turn the account off",
     "activate": "Turn the account on",
     "deactivateNote": "A turned-off account can't sign in, is signed out at once and doesn't count against the plan's users.",
-    "linkSent": "The link was sent to {{email}}."
+    "linkSent": "The link was sent to {{email}}.",
+    "mobileApp": "Mobile app"
   },
   "roles": {
     "title": "Roles",
@@ -5420,5 +5433,68 @@
     "done": "Your password is saved.",
     "signIn": "Sign in",
     "invalid": "This link has expired or was already used. Ask your administrator for a new one."
+  },
+  "mobileApp": {
+    "title": "The SSS HR System app",
+    "intro": "Check in, ask for leave and approve requests from your phone.",
+    "step1": "1. Install the app",
+    "appStore": "App Store",
+    "googlePlay": "Google Play",
+    "soon": "The app will be in the App Store and Google Play soon.",
+    "step2": "2. Open it and choose your company",
+    "code": "Company code",
+    "scan": "Enter the code, or tap “Scan the QR code” in the app.",
+    "qrAlt": "QR code for {{company}}'s app link",
+    "step3": "3. Sign in",
+    "step3Body": "With the same e-mail and password as the website.",
+    "useWebsite": "Use the website instead",
+    "print": "Print"
+  },
+  "privacyPolicy": {
+    "title": "Privacy policy",
+    "subtitle": "SSS HR System: the website and the mobile app",
+    "updated": "Last updated: {{date}}",
+    "sections": {
+      "who": {
+        "title": "Who we are",
+        "body": "SSS HR System is provided by Saudi Smart HR Solutions (شركة الحلول الذكية للموارد البشرية) to companies for managing their employees. Your employer chose the system and decides what it holds about you: under the Personal Data Protection Law (PDPL) your employer is the controller of your data, and we process it on your employer's behalf and on its instructions."
+      },
+      "collect": {
+        "title": "What the app collects",
+        "body": "- Your work e-mail and password, to sign you in. The password is never kept on the phone.\n- What you send: requests (leave, permissions, missions, letters, advances, expenses and others), their reasons and comments, and the files you attach, such as a receipt or a medical report.\n- Your location, only at the moment you check in or out, so your branch can confirm where you are. Never in the background.\n- A selfie, only when your company asks for one at check-in, taken with the front camera.\n- About the phone: its model, its system version, the app's version, a random number the app makes for this phone, and its push address, so you can see and sign out your phones and receive notifications.\n- Error reports, without your name, e-mail, files or anything you typed, to find and fix faults."
+      },
+      "not": {
+        "title": "What the app does not do",
+        "body": "- No advertising, no tracking across apps or websites, and no selling or renting of data.\n- Face ID and fingerprints stay on the phone: the app only learns whether the check succeeded.\n- No access to your contacts, messages or other apps' data."
+      },
+      "why": {
+        "title": "Why",
+        "body": "Only to provide the HR services your employer uses: your attendance, leave and requests, their approvals, your payslips, letters and documents, and the company's announcements and events. The legal basis is your employment contract and your employer's legal obligations under the Labor Law and related regulations."
+      },
+      "who_sees": {
+        "title": "Who sees it",
+        "body": "- Your employer: the people its settings allow, such as your manager, the approvers of your requests and the HR team.\n- Our staff, only to keep the system running or when your employer asks for support, which is recorded in the audit log.\n- Service providers we use to run the system: Google Firebase to deliver notifications (it receives the phone's push address and the notification) and Sentry for error reports (without personal data). These providers may process data outside the Kingdom; this is done only as the PDPL and its regulations on transfers allow.\n- Authorities, only when a law requires it."
+      },
+      "keep": {
+        "title": "How long it is kept",
+        "body": "As long as your employer keeps it, following its retention rules and the periods the law requires (for example payroll and attendance records). On the phone, the app keeps a copy of what it last loaded so it opens without a connection; it is encrypted and deleted when you sign out."
+      },
+      "security": {
+        "title": "How it is protected",
+        "body": "Every connection is encrypted (HTTPS). Each company's data is kept apart from every other company's. Sign-in keys are kept in the phone's secure storage, and files open only through short-lived links after a permission check. Screens with pay and documents are hidden from the app switcher."
+      },
+      "rights": {
+        "title": "Your rights",
+        "body": "Under the PDPL you can ask to know what is held about you, to receive a copy, to have it corrected, and to have it deleted when it is no longer needed. Since your employer controls your data, ask your HR team first; you can also write to us and we will pass your request to your employer and help it answer."
+      },
+      "contact": {
+        "title": "Contact us",
+        "body": "Saudi Smart HR Solutions. E-mail: {{email}}"
+      },
+      "changes": {
+        "title": "Changes",
+        "body": "When this policy changes, the date at the top changes too. An important change is announced in the app."
+      }
+    }
   }
 }

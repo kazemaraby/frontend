@@ -1,5 +1,5 @@
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Plus } from "lucide-react";
+import { Plus, Smartphone } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSearchParams } from "react-router";
@@ -42,7 +42,10 @@ export default function UsersPage() {
       tabs={<Tabs label={t("settings.users.title")} value={tab} onChange={(next) => setParams(next === "users" ? {} : { tab: next }, { replace: true })} items={(["users", "roles"] as const).map((id) => ({ id, label: t(`users.tabs.${id}`) }))} />}
       actions={
         tab === "users" ? (
-          <Button variant="accent" icon={<Plus className="size-4" />} onClick={() => setInviting(true)}>{t("users.add")}</Button>
+          <>
+            <Button variant="outline" icon={<Smartphone className="size-4" />} onClick={() => window.open("/app", "_blank", "noopener")}>{t("users.mobileApp")}</Button>
+            <Button variant="accent" icon={<Plus className="size-4" />} onClick={() => setInviting(true)}>{t("users.add")}</Button>
+          </>
         ) : (
           can("core.manage_roles") && <Button variant="accent" icon={<Plus className="size-4" />} onClick={() => setNewRole(true)}>{t("roles.add")}</Button>
         )

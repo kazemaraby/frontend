@@ -724,6 +724,11 @@ function PunchesCard() {
         <span className="flex flex-wrap items-center gap-2">
           {p.duplicate_of && <Pill tone="neutral">{t("devices.repeat")}</Pill>}
           {p.location?.outside && <Pill tone="sky">{t(`devices.outside.${p.location.outside}`)}</Pill>}
+          {p.location?.mock && (
+            <span title={t("devices.mockLocationHint")}>
+              <Pill tone="pink">{t("devices.mockLocation")}</Pill>
+            </span>
+          )}
           {p.location?.distance_m !== null && p.location?.distance_m !== undefined && (
             <span className="num text-xs text-muted">{t("devices.distance", { metres: p.location.distance_m })}</span>
           )}

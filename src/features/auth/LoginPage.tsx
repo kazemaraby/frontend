@@ -2,13 +2,15 @@ import { useQuery } from "@tanstack/react-query";
 import { Eye, EyeOff, Languages } from "lucide-react";
 import { type FormEvent, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Navigate, useNavigate, useSearchParams } from "react-router";
+import { Link, Navigate, useNavigate, useSearchParams } from "react-router";
 
 import { ApiError, endpoints } from "@/api";
 import { useSession } from "@/auth/session";
 import { Button, IconButton } from "@/design/Button";
 import { TextField } from "@/design/Field";
 import { Logo } from "@/layout/Logo";
+
+import { ForgotPasswordForm } from "./ForgotPasswordForm";
 
 /** Only same-app paths are followed after sign-in (no open redirects). */
 function safeNext(raw: string | null) {
@@ -26,6 +28,7 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [forgot, setForgot] = useState(false);
 
   // The tenant is the subdomain; on the bare platform domain there is nobody to sign in to.
   const health = useQuery({ queryKey: ["health"], queryFn: endpoints.health, staleTime: Infinity, retry: false });
@@ -80,7 +83,7 @@ export default function LoginPage() {
           <div className="mb-8 flex flex-col items-center gap-3 text-center">
             <Logo className="size-24" />
             <p dir="ltr" className="text-sm font-semibold tracking-wide text-muted">{t("app.name")}</p>
-            <h1 className="text-[26px] font-bold">{t("login.title")}</h1>
+            <h1 className="text-[26px] font-bold">{forgot ? t("login.forgot.title") : t("login.title")}</h1>
             {tenant && !noTenant && (
               <p className="text-muted">
                 {t("login.workspace")}{" "}
@@ -106,6 +109,8 @@ export default function LoginPage() {
                 </a>
               </p>
             </div>
+          ) : forgot ? (
+            <ForgotPasswordForm initialEmail={email} onBack={() => setForgot(false)} />
           ) : (
             <form onSubmit={onSubmit} className="flex flex-col gap-5" noValidate>
               <TextField
@@ -148,9 +153,15 @@ export default function LoginPage() {
               <Button type="submit" className="h-12 w-full" disabled={busy || !email || !password}>
                 {busy ? t("login.signingIn") : t("login.submit")}
               </Button>
+              <button type="button" className="cursor-pointer self-center text-sm font-semibold text-teal-dark hover:underline" onClick={() => setForgot(true)}>
+                {t("login.forgot.link")}
+              </button>
             </form>
           )}
         </section>
+        <p className="mt-4 text-center text-sm">
+          <Link to="/privacy" className="text-teal-dark hover:underline">{t("privacyPolicy.title")}</Link>
+        </p>
       </div>
     </main>
   );

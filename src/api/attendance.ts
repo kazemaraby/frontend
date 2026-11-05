@@ -224,7 +224,9 @@ export type Punch = {
   entered_by: string | null;
   connector: string | null;
   has_selfie: boolean;
-  location: { latitude: string; longitude: string; accuracy_m: number | null; distance_m: number | null; outside: "" | "remote" | "mission" } | null;
+  location: { latitude: string; longitude: string; accuracy_m: number | null; distance_m: number | null; outside: "" | "remote" | "mission"; mock?: boolean } | null;
+  /** The mobile app's version, for a punch from the app. */
+  app_version?: string;
 };
 
 export const punches = {
